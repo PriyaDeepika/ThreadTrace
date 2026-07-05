@@ -13,23 +13,23 @@ from services import query_service as query
 def cognee_status_banner():
     if cognee_svc.cognee_available():
         st.markdown(
-            """<div style="background:linear-gradient(90deg,rgba(99,102,241,0.15),rgba(139,92,246,0.1));
-            border:1px solid rgba(99,102,241,0.3);border-radius:10px;padding:10px 16px;
-            display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <span style="font-size:1.1rem">🧠</span>
-            <span style="font-weight:600;color:#818cf8;">Cognee Cloud connected</span>
-            <span style="color:#6b7280;font-size:0.88rem;">— AI memory features active</span>
-            </div>""",
+            '<div style="background:linear-gradient(90deg,rgba(99,102,241,0.15),rgba(139,92,246,0.1));'
+            'border:1px solid rgba(99,102,241,0.3);border-radius:10px;padding:10px 16px;'
+            'display:flex;align-items:center;gap:10px;margin-bottom:8px;">'
+            '<span style="font-size:1.1rem">🧠</span>'
+            '<span style="font-weight:600;color:#818cf8;">Cognee Cloud connected</span>'
+            '<span style="color:#6b7280;font-size:0.88rem;">— AI memory features active</span>'
+            '</div>',
             unsafe_allow_html=True,
         )
     else:
         st.markdown(
-            """<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);
-            border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <span style="font-size:1.1rem">🔑</span>
-            <span style="font-weight:600;color:#f59e0b;">Cognee not configured</span>
-            <span style="color:#6b7280;font-size:0.88rem;">— Set COGNEE_BASE_URL + COGNEE_API_KEY in .env</span>
-            </div>""",
+            '<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);'
+            'border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;margin-bottom:8px;">'
+            '<span style="font-size:1.1rem">🔑</span>'
+            '<span style="font-weight:600;color:#f59e0b;">Cognee not configured</span>'
+            '<span style="color:#6b7280;font-size:0.88rem;">— Set COGNEE_BASE_URL + COGNEE_API_KEY in .env</span>'
+            '</div>',
             unsafe_allow_html=True,
         )
 
@@ -37,13 +37,12 @@ def cognee_status_banner():
 def cognee_guard() -> bool:
     if not cognee_svc.cognee_available():
         st.markdown(
-            """<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);
-            border-radius:10px;padding:14px 18px;text-align:center;">
-            <div style="font-size:1.5rem;margin-bottom:6px;">🔑</div>
-            <div style="font-weight:600;color:#f59e0b;">Cognee Cloud not configured</div>
-            <div style="color:#6b7280;font-size:0.88rem;margin-top:4px;">
-            Add COGNEE_BASE_URL and COGNEE_API_KEY to your .env file</div>
-            </div>""",
+            '<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);'
+            'border-radius:10px;padding:14px 18px;text-align:center;">'
+            '<div style="font-size:1.5rem;margin-bottom:6px;">🔑</div>'
+            '<div style="font-weight:600;color:#f59e0b;">Cognee Cloud not configured</div>'
+            '<div style="color:#6b7280;font-size:0.88rem;margin-top:4px;">'
+            'Add COGNEE_BASE_URL and COGNEE_API_KEY to your .env file</div></div>',
             unsafe_allow_html=True,
         )
         return False
@@ -418,37 +417,29 @@ def render_case_card(case: dict, show_ai_summary: bool = False):
     ds      = query.days_since_followup(case["case_id"])
     last_fup = f"{ds}d ago" if ds is not None else "Never"
 
-    st.markdown(
-        f"""<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
-        border-radius:14px;padding:18px 22px;margin-bottom:10px;
-        transition:box-shadow 0.2s,transform 0.2s;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <div style="flex:1;">
-            <div style="font-size:1.15rem;font-weight:700;margin-bottom:4px;">
-              {case['student_name']}
-              <span style="font-size:0.72rem;color:#6b7280;font-weight:400;
-              margin-left:8px;font-family:monospace;">{case['case_id']}</span>
-            </div>
-            <div style="color:#9ca3af;font-size:0.85rem;margin-bottom:6px;">
-              📍 {case['location']} &nbsp;·&nbsp; 🎯 {case['goal']} &nbsp;·&nbsp;
-              👤 {case['assigned_volunteer']}
-            </div>
-            <div style="color:#6b7280;font-size:0.82rem;">
-              📋 {case['target_program_or_scholarship']} &nbsp;·&nbsp;
-              📅 {fmt_date(case['deadline'])} &nbsp;·&nbsp;
-              🕐 Last contact: {last_fup}
-              {'&nbsp;·&nbsp; <span style="color:#ef4444;">📄 ' + str(missing) + ' missing</span>' if missing else ''}
-            </div>
-          </div>
-          <div style="margin-left:16px;text-align:right;">
-            <span style="background:{bg};color:{tc};border:1px solid {border};
-            border-radius:20px;padding:4px 12px;font-size:0.78rem;font-weight:700;
-            white-space:nowrap;">{label}</span>
-          </div>
-        </div>
-        </div>""",
-        unsafe_allow_html=True,
+    _missing_span = (
+        f'&nbsp;·&nbsp; <span style="color:#ef4444;">📄 {missing} missing</span>'
+        if missing else ''
     )
+    _card = (
+        f'<div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);'
+        f'border-radius:14px;padding:18px 22px;margin-bottom:10px;">'
+        f'<div style="display:flex;justify-content:space-between;align-items:flex-start;">'
+        f'<div style="flex:1;">'
+        f'<div style="font-size:1.15rem;font-weight:700;margin-bottom:4px;">'
+        f'{case["student_name"]}'
+        f'<span style="font-size:0.72rem;color:#6b7280;font-weight:400;margin-left:8px;font-family:monospace;">{case["case_id"]}</span></div>'
+        f'<div style="color:#9ca3af;font-size:0.85rem;margin-bottom:6px;">'
+        f'📍 {case["location"]} &nbsp;·&nbsp; 🎯 {case["goal"]} &nbsp;·&nbsp; 👤 {case["assigned_volunteer"]}</div>'
+        f'<div style="color:#6b7280;font-size:0.82rem;">'
+        f'📋 {case["target_program_or_scholarship"]} &nbsp;·&nbsp; 📅 {fmt_date(case["deadline"])} &nbsp;·&nbsp; 🕐 Last contact: {last_fup}'
+        f'{_missing_span}</div></div>'
+        f'<div style="margin-left:16px;text-align:right;">'
+        f'<span style="background:{bg};color:{tc};border:1px solid {border};'
+        f'border-radius:20px;padding:4px 12px;font-size:0.78rem;font-weight:700;'
+        f'white-space:nowrap;">{label}</span></div></div></div>'
+    )
+    st.markdown(_card, unsafe_allow_html=True)
 
     if show_ai_summary and cognee_svc.cognee_available():
         with st.expander("🧠 AI Summary", expanded=False):
@@ -473,31 +464,38 @@ def render_followup_card(f: dict, show_delete: bool = False):
     col_main, col_del = st.columns([12, 1]) if show_delete else (st.container(), None)
 
     with (col_main if show_delete else col_main):
-        st.markdown(
-            f"""<div style="background:rgba(255,255,255,0.025);
-            border:1px solid rgba(255,255,255,0.07);border-left:3px solid {color};
-            border-radius:12px;padding:16px 20px;margin-bottom:8px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="background:rgba(255,255,255,0.06);border-radius:6px;
-                padding:3px 10px;font-size:0.8rem;font-weight:600;color:{color};">
-                  {icon} {ftype}
-                </span>
-                <span style="font-weight:600;color:rgba(255,255,255,0.85);">
-                  {f['worker_name']}
-                </span>
-              </div>
-              <span style="color:#6b7280;font-size:0.8rem;">{fmt_datetime(f['date'])}</span>
-            </div>
-            <div style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.6;margin-bottom:8px;">
-              {f['note_text'].replace(chr(10), '<br>')}
-            </div>
-            {"<div style='background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:8px 12px;font-size:0.83rem;color:#f59e0b;margin-top:6px;'>🚧 <strong>Blocker:</strong> " + f['blockers'] + "</div>" if f.get('blockers') else ""}
-            {"<div style='background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:8px;padding:8px 12px;font-size:0.83rem;color:#818cf8;margin-top:6px;'>➡️ <strong>Next:</strong> " + f['next_step'] + "</div>" if f.get('next_step') else ""}
-            {"<div style='color:#6b7280;font-size:0.78rem;margin-top:6px;'>📅 Next follow-up: " + fmt_date(f['next_followup_date']) + "</div>" if f.get('next_followup_date') else ""}
-            </div>""",
-            unsafe_allow_html=True,
+        _blocker_html = (
+            f'<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);'
+            f'border-radius:8px;padding:8px 12px;font-size:0.83rem;color:#f59e0b;margin-top:6px;">'
+            f'🚧 <strong>Blocker:</strong> {f["blockers"]}</div>'
+        ) if f.get("blockers") else ""
+        _next_html = (
+            f'<div style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);'
+            f'border-radius:8px;padding:8px 12px;font-size:0.83rem;color:#818cf8;margin-top:6px;">'
+            f'➡️ <strong>Next:</strong> {f["next_step"]}</div>'
+        ) if f.get("next_step") else ""
+        _date_html = (
+            f'<div style="color:#6b7280;font-size:0.78rem;margin-top:6px;">'
+            f'📅 Next follow-up: {fmt_date(f["next_followup_date"])}</div>'
+        ) if f.get("next_followup_date") else ""
+        _note = f["note_text"].replace("\n", "<br>")
+        _fup_card = (
+            f'<div style="background:rgba(255,255,255,0.025);'
+            f'border:1px solid rgba(255,255,255,0.07);border-left:3px solid {color};'
+            f'border-radius:12px;padding:16px 20px;margin-bottom:8px;">'
+            f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+            f'<div style="display:flex;align-items:center;gap:8px;">'
+            f'<span style="background:rgba(255,255,255,0.06);border-radius:6px;'
+            f'padding:3px 10px;font-size:0.8rem;font-weight:600;color:{color};">{icon} {ftype}</span>'
+            f'<span style="font-weight:600;color:rgba(255,255,255,0.85);">{f["worker_name"]}</span>'
+            f'</div>'
+            f'<span style="color:#6b7280;font-size:0.8rem;">{fmt_datetime(f["date"])}</span>'
+            f'</div>'
+            f'<div style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.6;margin-bottom:8px;">{_note}</div>'
+            f'{_blocker_html}{_next_html}{_date_html}'
+            f'</div>'
         )
+        st.markdown(_fup_card, unsafe_allow_html=True)
 
     if show_delete and col_del:
         with col_del:
@@ -515,9 +513,9 @@ def render_document_table(docs: list, editable: bool = False):
     updates = []
     if not docs:
         st.markdown(
-            """<div style="text-align:center;padding:24px;color:#6b7280;
-            border:1px dashed rgba(255,255,255,0.1);border-radius:12px;">
-            📄 No documents tracked yet</div>""",
+            '<div style="text-align:center;padding:24px;color:#6b7280;'
+            'border:1px dashed rgba(255,255,255,0.1);border-radius:12px;">'
+            '📄 No documents tracked yet</div>',
             unsafe_allow_html=True,
         )
         return updates
@@ -561,14 +559,13 @@ def empty_state(icon: str, title: str, subtitle: str = "", action: str = ""):
         f'<div style="margin-top:8px;color:#6366f1;font-size:0.85rem;">{action}</div>'
         if action else ""
     )
-    st.markdown(
-        f"""<div style="text-align:center;padding:48px 24px;
-        border:1px dashed rgba(99,102,241,0.2);border-radius:16px;
-        background:rgba(99,102,241,0.03);">
-        <div style="font-size:3rem;margin-bottom:12px;">{icon}</div>
-        <div style="font-weight:600;font-size:1.05rem;margin-bottom:6px;">{title}</div>
-        <div style="color:#6b7280;font-size:0.88rem;">{subtitle}</div>
-        {action_html}
-        </div>""",
-        unsafe_allow_html=True,
+    _es = (
+        f'<div style="text-align:center;padding:48px 24px;'
+        f'border:1px dashed rgba(99,102,241,0.2);border-radius:16px;'
+        f'background:rgba(99,102,241,0.03);">'
+        f'<div style="font-size:3rem;margin-bottom:12px;">{icon}</div>'
+        f'<div style="font-weight:600;font-size:1.05rem;margin-bottom:6px;">{title}</div>'
+        f'<div style="color:#6b7280;font-size:0.88rem;">{subtitle}</div>'
+        f'{action_html}</div>'
     )
+    st.markdown(_es, unsafe_allow_html=True)

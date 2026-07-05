@@ -97,5 +97,16 @@
     "next_step": "",
     "next_followup_date": null,
     "followup_type": "message"
+  },
+  {
+    "followup_id": "5734f19e",
+    "case_id": "abf2f135",
+    "date": "2026-07-05T21:08:23.907613",
+    "worker_name": "Preethi",
+    "note_text": "Messaged Mehek. Helped him about the admission process. Want a last check ",
+    "blockers": "",
+    "next_step": "",
+    "next_followup_date": "2026-07-08",
+    "followup_type": "message"
   }
 ]

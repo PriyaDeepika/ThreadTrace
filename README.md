@@ -1,70 +1,95 @@
-# ThreadTrace
+# 🌉 ThreadTrace
 
-An AI memory assistant for education-support NGOs and mentors. Remembers
-student case history, missing documents, deadlines, and follow-up actions
-across multiple volunteers and sessions.
+**AI-powered case memory for NGO education support workers**
 
-## Setup
+ThreadTrace helps volunteers manage student scholarship and admission cases without losing context. Every follow-up note, document update, and case event is stored locally and committed to **Cognee Cloud** as AI memory — so any volunteer can instantly recall the full history of any case, get suggested next actions, and surface risks across the entire caseload.
+
+---
+
+## What's Inside
+
+```
+threadtrace/
+├── app.py                      # Home — metrics, activity feed, AI daily briefing
+├── pages/
+│   ├── 1_Add_Case.py           # Register a new student case
+│   ├── 2_Add_Followup.py       # Log a call, visit, or message
+│   ├── 3_Case_Detail.py        # Full case view + AI memory panel
+│   ├── 4_Ask_ThreadTrace.py    # Natural language queries over all cases
+│   ├── 5_Search.py             # Keyword + AI semantic search
+│   ├── 6_Dashboard.py          # Urgent cases, volunteers, activity feed
+│   ├── 7_Reports.py            # Stats, AI insights, CSV export
+│   └── 8_Close_Purge.py        # Close or permanently purge a case
+├── services/
+│   ├── cognee_service.py       # All Cognee Cloud integration (AI memory)
+│   ├── storage_service.py      # Local JSON storage for cases, docs, follow-ups
+│   └── query_service.py        # Urgency logic, reports, CSV export
+├── utils/
+│   ├── helpers.py              # Shared UI components
+│   └── styles.py               # Global CSS
+├── seed/
+│   └── demo_seed.py            # Loads 5 demo cases with follow-ups into the app
+├── data/                       # Auto-created — cases.json, documents.json, followups.json
+├── .env.example                # Credential template
+└── requirements.txt
+```
+
+---
+
+## Getting Started
+
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env
-# Edit .env: add your Cognee Cloud COGNEE_SERVICE_URL and COGNEE_API_KEY
-# (sign up at Cognee Cloud, claim the dev credit with code COGNEE-35,
-# generate an API key from the API Keys page in the console)
 ```
 
-## Run
+### 2. Add your credentials
 
 ```bash
-streamlit run app.py
+cp .env.example .env
 ```
 
-## Load demo data (do this before your first real test/demo)
+Open `.env` and fill in your Cognee Cloud details:
+
+```env
+COGNEE_BASE_URL=https://your-tenant.aws.cognee.ai
+COGNEE_API_KEY=ck_your_key_here
+```
+
+> Sign up at [cognee.ai](https://cognee.ai)
+
+### 3. Load demo data
+
+Run this once before your first use or demo. It creates 5 realistic student cases with documents and follow-ups, and seeds everything into Cognee memory so AI features work immediately.
 
 ```bash
 python seed/demo_seed.py
 ```
 
-## Project structure
+### 4. Run the app
 
-```
-ThreadTrace/
-├── app.py                      # Landing page + summary metrics
-├── pages/
-│   ├── 1_Add_Case.py           # Create a new student case
-│   ├── 2_Add_Followup.py       # Log a call/visit -> calls cognee remember()
-│   ├── 3_Ask_ThreadTrace.py     # Query memory -> calls cognee recall()
-│   ├── 4_Dashboard.py          # Urgent / overdue / deadline views
-│   └── 5_Close_Purge_Case.py   # Close (soft) or Purge (hard delete, forget())
-├── services/
-│   ├── cognee_service.py       # All Cognee remember/recall/forget calls
-│   ├── storage_service.py      # Local JSON storage for structured data
-│   └── query_service.py        # Derived logic: urgency, overdue calculations
-├── seed/
-│   └── demo_seed.py            # Generates 5 demo cases + follow-ups
-└── data/                       # cases.json, documents.json, followups.json
+```bash
+streamlit run app.py
 ```
 
-## Key design decisions
+Opens at `http://localhost:8501`.
 
-- **Only follow-up notes go into Cognee.** StudentCase and Document fields
-  are structured data with no unstructured text worth a knowledge graph —
-  they live in local JSON only. This keeps the Cognee usage honest: recall()
-  answers from real ingested text, not re-served structured fields.
-- **One Cognee dataset per case** (`case_<id>`). This is what makes
-  `forget_case()` a clean, scoped purge instead of an all-or-nothing wipe.
-- **Urgency is computed, not stored.** A case is urgent if its deadline is
-  within 5 days OR it hasn't had a follow-up in 10+ days. See
-  `query_service.py` to change these thresholds.
-- **Close vs Purge are two different actions.** Close = soft status change,
-  data stays. Purge = hard delete from local storage AND Cognee memory —
-  this is the actual `forget()` demo moment.
+---
 
-## Demo script :)
+## Key Features
 
-1. Show the dashboard with seeded cases — urgent ones flagged.
-2. Add a follow-up note live for one case.
-3. Ask: *"Summarize [student]'s case and what's still pending."*
-4. Ask across all cases: *"Who hasn't been followed up in 10 days?"*
-5. Purge a closed case — show it's actually gone from memory.
+- **Case management** — create and track student cases with documents, deadlines, and assigned volunteers
+- **Follow-up logging** — log every call, visit, or message; each one is committed to Cognee AI memory
+- **AI case intelligence** — per-case summary, next action suggestion, blocker extraction, timeline reconstruction, and risk assessment powered by Cognee recall
+- **Natural language querying** — ask questions across one case or your entire caseload
+- **Semantic search** — search inside follow-up notes and context, not just structured fields
+- **Dashboard** — live urgency tracking, overdue follow-ups, volunteer workload, AI briefing
+- **Reports & export** — charts, AI caseload insights, and CSV export for cases and follow-ups
+- **Safe deletion** — close cases softly or purge them permanently from both storage and Cognee memory
+
+---
+
+## 📖 Documentation
+
+For the complete architecture, Cognee integration, setup guide, and technical details, see [DOCUMENTATION.md](DOCUMENTATION.md).

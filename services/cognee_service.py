@@ -404,4 +404,4 @@ def run_async(coro):
     """
     loop = _get_loop()
     future = asyncio.run_coroutine_threadsafe(coro, loop)
-    return future.result(timeout=120)  # 2-minute timeout
+    return future.result(timeout=300)  # 5-minute timeout

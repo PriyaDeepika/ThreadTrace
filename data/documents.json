@@ -93,10 +93,10 @@
     "doc_id": "cdb4183a",
     "case_id": "998d6829",
     "doc_name": "Caste certificate",
-    "status": "missing",
+    "status": "submitted",
     "notes": "",
     "created_at": "2026-07-05T10:49:03.931277",
-    "updated_at": "2026-07-05T10:49:03.931277"
+    "updated_at": "2026-07-05T20:03:09.211674"
   },
   {
     "doc_id": "c6aa916f",
@@ -178,5 +178,14 @@
     "notes": "",
     "created_at": "2026-07-05T16:27:07.030390",
     "updated_at": "2026-07-05T16:27:07.030390"
+  },
+  {
+    "doc_id": "744fc267",
+    "case_id": "abf2f135",
+    "doc_name": "Counseling fee receipt",
+    "status": "pending_verification",
+    "notes": "HAve to check the Counseling fee receipt",
+    "created_at": "2026-07-05T21:09:50.196555",
+    "updated_at": "2026-07-05T21:09:50.196555"
   }
 ]

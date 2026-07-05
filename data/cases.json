@@ -47,7 +47,7 @@
     "age": "17",
     "education_level": "Class 12",
     "created_at": "2026-07-05T10:49:03.915324",
-    "updated_at": "2026-07-05T10:49:03.915324",
+    "updated_at": "2026-07-05T20:03:19.131623",
     "closed_at": null
   },
   {
@@ -81,7 +81,24 @@
     "age": "18",
     "education_level": "Undergraduate",
     "created_at": "2026-07-05T16:27:07.021630",
-    "updated_at": "2026-07-05T16:40:56.753544",
-    "closed_at": "2026-07-05T16:40:56.753544"
+    "updated_at": "2026-07-05T20:12:08.516737",
+    "closed_at": "2026-07-05T20:12:08.516737"
+  },
+  {
+    "case_id": "abf2f135",
+    "student_name": "Mehek",
+    "location": "Thiruchirapalli",
+    "goal": "Admission support",
+    "target_program_or_scholarship": "For Admission in college",
+    "deadline": "2026-07-11",
+    "status": "active",
+    "assigned_volunteer": "Pooja",
+    "summary": "Called Mehek. He doesn't know how to go through the admission in college.",
+    "contact_number": "",
+    "age": "17",
+    "education_level": "Undergraduate",
+    "created_at": "2026-07-05T21:05:04.091486",
+    "updated_at": "2026-07-05T21:05:04.091486",
+    "closed_at": null
   }
 ]

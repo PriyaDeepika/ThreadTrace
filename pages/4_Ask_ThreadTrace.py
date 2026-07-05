@@ -57,8 +57,11 @@ with tab1:
                               placeholder="e.g. What did we promise last time?")
     if st.button("Ask →", type="primary", key="ask_single_btn") and question:
         with st.spinner(f"Recalling from {selected['student_name']}'s memory..."):
-            answer = cognee_svc.recall_case(selected["case_id"], question)
-        ai_insight_box(f"{selected['student_name']} — {question[:60]}", answer)
+            try:
+                answer = cognee_svc.recall_case(selected["case_id"], question)
+                ai_insight_box(f"{selected['student_name']} — {question[:60]}", answer)
+            except TimeoutError:
+                st.error("⏱️ Cognee timed out. Try again.", icon="⚠️")
         st.session_state["query_history"].insert(0,
             {"q": question, "a": answer, "scope": selected["student_name"]})
 
@@ -92,9 +95,12 @@ with tab2:
                              value=cross_clicked or "",
                              placeholder="e.g. Which cases need immediate attention?")
     if st.button("Ask →", type="primary", key="ask_cross_btn") and cross_q:
-        with st.spinner(f"Querying across {len(ids)} cases..."):
-            answer = cognee_svc.recall_across_cases(cross_q, ids)
-        ai_insight_box(f"{len(ids)} cases — {cross_q[:60]}", answer)
+        with st.spinner(f"Querying across {len(ids)} cases — please wait..."):
+            try:
+                answer = cognee_svc.recall_across_cases(cross_q, ids)
+                ai_insight_box(f"{len(ids)} cases — {cross_q[:60]}", answer)
+            except TimeoutError:
+                st.error("⏱️ Cognee timed out. Try a more specific query.", icon="⚠️")
         st.session_state["query_history"].insert(0,
             {"q": cross_q, "a": answer, "scope": f"{len(ids)} cases"})
 
@@ -138,9 +144,12 @@ with tab3:
         with st.expander(preset_name):
             st.caption(f"_{preset_query[:130]}…_")
             if st.button(f"Run →", key=f"preset_{preset_name}"):
-                with st.spinner("Analyzing across all cases..."):
-                    answer = cognee_svc.recall_across_cases(preset_query, case_ids)
-                ai_insight_box(preset_name, answer)
+                with st.spinner("Analyzing across all cases — please wait..."):
+                    try:
+                        answer = cognee_svc.recall_across_cases(preset_query, case_ids)
+                        ai_insight_box(preset_name, answer)
+                    except TimeoutError:
+                        st.error("⏱️ Cognee timed out. Try again.", icon="⚠️")
                 st.session_state["query_history"].insert(0,
                     {"q": preset_name, "a": answer, "scope": f"{len(case_ids)} cases"})
 

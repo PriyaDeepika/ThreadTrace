@@ -73,10 +73,22 @@ else:
         key="semantic_in")
 
     if st.button("🔍 Search with AI", type="primary") and semantic_q:
-        with st.spinner("Searching Cognee memory..."):
-            result = cognee_svc.semantic_search(semantic_q,
-                                                [c["case_id"] for c in all_cases])
-        ai_insight_box(f'Semantic Search: "{semantic_q}"', result)
+        st.info(
+            "⏳ Searching Cognee memory across all cases — "
+            "this can take 30–90 seconds. Please wait.",
+            icon="🧠",
+        )
+        with st.spinner("AI semantic search in progress — do not navigate away..."):
+            try:
+                result = cognee_svc.semantic_search(semantic_q,
+                                                    [c["case_id"] for c in all_cases])
+                ai_insight_box(f'Semantic Search: "{semantic_q}"', result)
+            except TimeoutError:
+                st.error(
+                    "⏱️ Search timed out. Cognee Cloud is taking too long. "
+                    "Try a shorter or more specific query.",
+                    icon="⚠️",
+                )
 
     st.divider()
 
