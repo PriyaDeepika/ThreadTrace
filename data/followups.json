@@ -1,1 +1,101 @@
-[]
+[
+  {
+    "followup_id": "dca07359",
+    "case_id": "3565f2e3",
+    "date": "2026-07-05T10:46:48.109968",
+    "worker_name": "Deepika",
+    "note_text": "Initial counseling call completed. Anjali is very motivated and has been tracking the scholarship deadline herself. She understands the requirements clearly.",
+    "blockers": "",
+    "next_step": "Send her the document checklist",
+    "next_followup_date": null,
+    "followup_type": "call"
+  },
+  {
+    "followup_id": "8d14d0e8",
+    "case_id": "3565f2e3",
+    "date": "2026-07-05T10:46:48.133777",
+    "worker_name": "Deepika",
+    "note_text": "Called Anjali today. She confirmed caste certificate and marks memo are ready. Income certificate is still pending \u2014 her father needs to visit the village office but has been busy with harvest work. She sounded worried about the deadline.",
+    "blockers": "Father hasn't visited village office for income certificate. Harvest season making it difficult.",
+    "next_step": "Volunteer to follow up in 2 days. Ask her to request a relative to go instead if father can't.",
+    "next_followup_date": null,
+    "followup_type": "call"
+  },
+  {
+    "followup_id": "2b2eb841",
+    "case_id": "3565f2e3",
+    "date": "2026-07-05T10:46:48.159360",
+    "worker_name": "Meena",
+    "note_text": "Covering for Deepika today. Spoke with Anjali. She managed to get a neighbour to accompany her father. Income certificate may be ready by tomorrow. Also reviewed her SOP \u2014 it needs one more revision to highlight financial need more clearly.",
+    "blockers": "SOP still needs revision. Income certificate not yet in hand.",
+    "next_step": "Deepika to collect income certificate and final SOP by July 5",
+    "next_followup_date": null,
+    "followup_type": "call"
+  },
+  {
+    "followup_id": "62ad5fb1",
+    "case_id": "07a7323c",
+    "date": "2026-07-05T10:48:06.780455",
+    "worker_name": "Arjun",
+    "note_text": "Spoke with Ravi. He has uploaded marks memo and Aadhaar successfully. Very relieved about the hostel support possibility. Main concern is the recommendation letter \u2014 he isn't sure whether the department head or the principal should sign it.",
+    "blockers": "Recommendation letter: unsure whether department head or principal should sign. College admin hasn't responded to his query.",
+    "next_step": "Arjun to call the college welfare officer directly to clarify the format.",
+    "next_followup_date": null,
+    "followup_type": "call"
+  },
+  {
+    "followup_id": "a17d2439",
+    "case_id": "07a7323c",
+    "date": "2026-07-05T10:48:06.795729",
+    "worker_name": "Arjun",
+    "note_text": "Called the college welfare officer. Confirmed that BOTH department head and principal signatures are required. Shared the correct format template with Ravi over WhatsApp. He missed our scheduled call today \u2014 will try again tomorrow.",
+    "blockers": "Ravi missed the follow-up call. Recommendation letter still not submitted.",
+    "next_step": "Try to reach Ravi again tomorrow. Confirm he received the format template.",
+    "next_followup_date": null,
+    "followup_type": "call"
+  },
+  {
+    "followup_id": "aa2ad66d",
+    "case_id": "998d6829",
+    "date": "2026-07-05T10:49:04.009955",
+    "worker_name": "Deepika",
+    "note_text": "First contact with Priya. She is very keen on nursing. Academic performance is good. Main issue is the counseling fee \u2014 family doesn't have the money right now. Also, her caste certificate is not in hand yet.",
+    "blockers": "Family cannot pay the \u20b9500 counseling fee. Caste certificate missing.",
+    "next_step": "Explore whether the NGO has an emergency fund that can cover the counseling fee. Check if caste certificate can be obtained urgently.",
+    "next_followup_date": null,
+    "followup_type": "visit"
+  },
+  {
+    "followup_id": "4600dfec",
+    "case_id": "998d6829",
+    "date": "2026-07-05T10:49:04.026647",
+    "worker_name": "Deepika",
+    "note_text": "Escalated to NGO coordinator about the fee. Coordinator has approved \u20b9500 from the emergency fund \u2014 Deepika will transfer today. Caste certificate: Priya's mother is at the tahsildar office right now trying to get it. Deadline is in 2 days.",
+    "blockers": "Caste certificate still not in hand. Time is very short.",
+    "next_step": "Confirm caste certificate by end of day. Transfer the counseling fee. Prepare Priya for the counseling process.",
+    "next_followup_date": null,
+    "followup_type": "message"
+  },
+  {
+    "followup_id": "a8d947ee",
+    "case_id": "f8b4e4e9",
+    "date": "2026-07-05T10:50:04.717911",
+    "worker_name": "Meena",
+    "note_text": "Met Naveen in person at the polytechnic. He is shy but eager. Has never applied online for anything before. Walked him through the scholarship portal. He got confused at the bank account section \u2014 he doesn't have a personal account, only a family joint account. Need to clarify whether a joint account is acceptable.",
+    "blockers": "No personal bank account. Uses family joint account \u2014 unclear if acceptable for scholarship disbursement.",
+    "next_step": "Call the scholarship helpline to confirm if joint account is acceptable. Also check if he can open a zero-balance account urgently.",
+    "next_followup_date": null,
+    "followup_type": "visit"
+  },
+  {
+    "followup_id": "c9580da0",
+    "case_id": "f9db8545",
+    "date": "2026-07-05T16:40:56.760807",
+    "worker_name": "System",
+    "note_text": "[CASE CLOSED] done student got scholarship",
+    "blockers": "",
+    "next_step": "",
+    "next_followup_date": null,
+    "followup_type": "message"
+  }
+]
