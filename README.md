@@ -61,7 +61,7 @@ ThreadTrace/
   data stays. Purge = hard delete from local storage AND Cognee memory —
   this is the actual `forget()` demo moment.
 
-## Demo script (~90 seconds)
+## Demo script :)
 
 1. Show the dashboard with seeded cases — urgent ones flagged.
 2. Add a follow-up note live for one case.
