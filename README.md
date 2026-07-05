@@ -92,4 +92,4 @@ Opens at `http://localhost:8501`.
 
 ## 📖 Documentation
 
-For the complete architecture, Cognee integration, setup guide, and technical details, see [DOCUMENTATION.md](https://github.com/PriyaDeepika/ThreadTrace/blob/main/Documentation.md).
+For the complete architecture, Cognee integration, setup guide, and technical details, see [DOCUMENTATION.md](Documentation.md).
